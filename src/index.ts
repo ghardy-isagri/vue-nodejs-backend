@@ -1,6 +1,6 @@
 import { ApolloServer } from 'apollo-server';
-import { typeDefs } from './schema';
-import { resolvers } from './resolvers';
+import { typeDefs } from './schema.js';
+import { resolvers } from './resolvers/index.js';
 
 const port: string | number = process.env['PORT'] || 9090;
 

@@ -1,57 +1,19 @@
-import { prisma } from "../database";
-import { CreateFixedAssetInput, UpdateFixedAssetInput } from "../gql/resolvers-types";
+// src/resolvers/mutation.ts 
+import { CreateFixedAssetInput, UpdateFixedAssetInput } from "../gql/resolvers-types.js";
+import { FixedAssetService } from "../services/FixedAssetService.js";
 
-const Mutation = {
-
-  
-  // Create a new FixedAsset
-  createFixedAsset: async (
-    _parent: unknown,
-    args: { data: CreateFixedAssetInput }
-  ) => {
-    return prisma.fixedAsset.create({
-      data: {
-        name: args.data.name,
-        accountId: args.data.accountId,
-        number: args.data.number,
-        type: args.data.type,
-        acquisitionType: args.data.acquisitionType,
-        acquisitionDate: new Date(args.data.acquisitionDate),
-        acquisitionAmount: args.data.acquisitionAmount,
-        vatAmount: args.data.vatAmount,
-        comments: args.data.comments || null,
-      },
-    });
+export const Mutation = {
+  createFixedAsset: async (_parent: unknown, args: { data: CreateFixedAssetInput }) => {
+    return FixedAssetService.createFixedAsset(args.data);
   },
 
-  // Update an existing FixedAsset
-  updateFixedAsset: async (
-    _parent: unknown,
-    args: { data: UpdateFixedAssetInput }
-  ) => {
-    return prisma.fixedAsset.update({
-      where: { id: Number(args.data.id) },
-      data: {
-        name: args.data.name || undefined,
-        accountId: args.data.accountId || undefined,
-        number: args.data.number || undefined,
-        type: args.data.type || undefined,
-        acquisitionType: args.data.acquisitionType || undefined,
-        acquisitionDate: args.data.acquisitionDate
-          ? new Date(args.data.acquisitionDate)
-          : undefined,
-        acquisitionAmount: args.data.acquisitionAmount || undefined,
-        vatAmount: args.data.vatAmount || undefined,
-        comments: args.data.comments || undefined,
-      },
-    });
+  updateFixedAsset: async (_parent: unknown, args: { data: UpdateFixedAssetInput }) => {
+    return FixedAssetService.updateFixedAsset(args.data);
   },
 
-  // Delete a FixedAsset
   deleteFixedAsset: async (_parent: unknown, args: { id: string }) => {
-    return prisma.fixedAsset.delete({
-      where: { id: Number(args.id) },
-    });
+    return FixedAssetService.deleteFixedAsset(args.id);
   },
 };
-export { Mutation };
+
+

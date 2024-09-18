@@ -1,5 +1,5 @@
-import { Query } from "./query";
-import { Mutation } from "./mutation";
+import { Query } from "./query.js";
+import { Mutation } from "./mutation.js";
 
 
 export const resolvers = {

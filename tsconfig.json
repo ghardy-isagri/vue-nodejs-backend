@@ -1,7 +1,18 @@
 {
-    "extends": "@tsconfig/node18-strictest/tsconfig.json",
-    "compilerOptions": {
-      "importsNotUsedAsValues": "remove"
-    }
-  }
-  
+  "compilerOptions": {
+      "sourceMap": true,
+      "forceConsistentCasingInFileNames": true,
+      "outDir": "dist",
+      "module": "NodeNext",
+      "esModuleInterop": true,
+      "target": "ESNext",
+      "strict": true,
+  },
+  "include": [
+      "src/**/*",
+      "tests/**/*"
+  ],
+  "exclude": [
+      "node_modules"
+  ]
+}

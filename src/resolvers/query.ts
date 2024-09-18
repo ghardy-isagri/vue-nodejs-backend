@@ -1,5 +1,9 @@
-import { prisma } from "../database";
+import { prisma } from "../database.js";
 
+// Define types for the query arguments
+interface Args {
+  id?: string;
+}
 
 
 const Query = {

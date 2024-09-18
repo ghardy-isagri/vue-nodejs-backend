@@ -11,4 +11,5 @@ const server: CodegenConfig = {
     },
   },
 };
-export default server;
+
+module.exports = { server}
