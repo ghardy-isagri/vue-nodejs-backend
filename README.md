@@ -10,8 +10,7 @@ Stack : Node.js, Prisma, GraphQL, ApolloServer
 ```docker-compose up -d  ```
 
 # Test : Mocha/Chai  
-
-Installation 
+# Installation 
 ```npm install --save-dev mocha | npm install --save-dev chai ```
  
 # Prisma
