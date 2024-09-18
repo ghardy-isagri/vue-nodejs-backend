@@ -7,14 +7,14 @@ Stack : Node.js, Prisma, GraphQL, ApolloServer
 `npm i`
 
 (For Postgre)
-docker-compose up -d  
+```docker-compose up -d  ```
 
 # Test : Mocha/Chai  
 
 Installation 
-npm install --save-dev mocha | npm install --save-dev chai 
+```npm install --save-dev mocha | npm install --save-dev chai ```
  
 # Prisma
 
-npx prisma studio 
+```npx prisma studio ```
 
