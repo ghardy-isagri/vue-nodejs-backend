@@ -30,6 +30,12 @@ export enum AssetType {
   PretsDepotsCautions = 'PRETS_DEPOTS_CAUTIONS'
 }
 
+export type Comment = {
+  __typename?: 'Comment';
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
+};
+
 export type CreateFixedAssetInput = {
   accountId: Scalars['Int']['input'];
   acquisitionAmount: Scalars['Float']['input'];
@@ -48,7 +54,7 @@ export type FixedAsset = {
   acquisitionAmount: Scalars['Float']['output'];
   acquisitionDate: Scalars['String']['output'];
   acquisitionType: AcquisitionType;
-  comments?: Maybe<Scalars['String']['output']>;
+  comments?: Maybe<Comment>;
   createdAt: Scalars['String']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
@@ -179,6 +185,7 @@ export type ResolversTypes = ResolversObject<{
   AcquisitionType: AcquisitionType;
   AssetType: AssetType;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Comment: ResolverTypeWrapper<Comment>;
   CreateFixedAssetInput: CreateFixedAssetInput;
   FixedAsset: ResolverTypeWrapper<FixedAsset>;
   Float: ResolverTypeWrapper<Scalars['Float']['output']>;
@@ -193,6 +200,7 @@ export type ResolversTypes = ResolversObject<{
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean']['output'];
+  Comment: Comment;
   CreateFixedAssetInput: CreateFixedAssetInput;
   FixedAsset: FixedAsset;
   Float: Scalars['Float']['output'];
@@ -204,12 +212,18 @@ export type ResolversParentTypes = ResolversObject<{
   UpdateFixedAssetInput: UpdateFixedAssetInput;
 }>;
 
+export type CommentResolvers<ContextType = any, ParentType extends ResolversParentTypes['Comment'] = ResolversParentTypes['Comment']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type FixedAssetResolvers<ContextType = any, ParentType extends ResolversParentTypes['FixedAsset'] = ResolversParentTypes['FixedAsset']> = ResolversObject<{
   accountId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   acquisitionAmount?: Resolver<ResolversTypes['Float'], ParentType, ContextType>;
   acquisitionDate?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   acquisitionType?: Resolver<ResolversTypes['AcquisitionType'], ParentType, ContextType>;
-  comments?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  comments?: Resolver<Maybe<ResolversTypes['Comment']>, ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -232,6 +246,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
+  Comment?: CommentResolvers<ContextType>;
   FixedAsset?: FixedAssetResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;

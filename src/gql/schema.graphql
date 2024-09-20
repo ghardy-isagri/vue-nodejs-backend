@@ -8,11 +8,15 @@ type FixedAsset {
   acquisitionDate: String!
   acquisitionAmount: Float!
   vatAmount: Float!
-  comments: String
+  comments: Comment
   createdAt: String!
   updatedAt: String!
 }
 
+type Comment {
+  id: ID!
+  name: String!
+}
 enum AssetType {
   AUTRES
   BATIMENTS
